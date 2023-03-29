@@ -161,7 +161,7 @@ function bigShoeRebounds(){
 console.log(bigShoeRebounds())
 
 function mostPointsScored(){
-    let object  = gameObject()
+    const object  = gameObject()
     let maxPointHome = -1
     let maxPlayerPointHome = ""
     for (let player in object.home.players){
@@ -186,3 +186,37 @@ function mostPointsScored(){
 }
 
 console.log(mostPointsScored())
+
+function winningTeam(){
+    const object = gameObject()
+    let homePoints = 0
+    for (let player in object.home.players){
+        homePoints += object.home.players[player].points
+    }
+    let awayPoints = 0
+    for (let player in object.away.players){
+        awayPoints += object.away.players[player].points
+    }
+    if( awayPoints > homePoints)
+        return object.away
+    else
+        return object.home
+}
+console.log(winningTeam())
+
+function playerWithLongestName(){
+    const object = gameObject()
+    let maxLengthName = ""
+    for (let player in object.home.players){
+        if (player.length > maxLengthName.length){
+            maxLengthName = player
+        }
+    }
+    for (let player in object.away.players){
+        if (player.length > maxLengthName.length){
+            maxLengthName = player
+        }
+    }
+    return maxLengthName
+}
+console.log(playerWithLongestName())
