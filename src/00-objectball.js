@@ -141,8 +141,8 @@ function bigShoeRebounds(){
     let playerMaxHome = ""
     for (let player in object.home.players){
         if (object.home.players[player].shoe > maxSizeHome){
-            playerMaxHome = player
             maxSizeHome = object.home.players[player].shoe
+            playerMaxHome = player
         }
     }
     let maxSizeAway = -1
@@ -157,7 +157,32 @@ function bigShoeRebounds(){
         return object.away.players[playerMaxAway]
     else
         return object.home.players[playerMaxHome]
+}
+console.log(bigShoeRebounds())
 
+function mostPointsScored(){
+    let object  = gameObject()
+    let maxPointHome = -1
+    let maxPlayerPointHome = ""
+    for (let player in object.home.players){
+        if (object.home.players[player].points > maxPointHome){
+            maxPlayerPointHome = player
+            maxPointHome = object.home.players[player].points
+        }
+    }
+    let maxPointAway = -1
+    let maxPlayerPointAway = ""
+    for (let player in object.away.players){
+        if (object.away.players[player].points > maxPointAway){
+            maxPlayerPointAway = player
+            maxPointAway = object.away.players[player].points
+        }
+    }
+    console.log(maxPlayerPointAway)
+    if( maxPointAway > maxPointHome)
+        return maxPlayerPointAway, object.away.players[maxPlayerPointAway]
+    else
+        return  maxPlayerPointHome, object.home.players[maxPlayerPointHome]
 }
 
-console.log(bigShoeRebounds())
+console.log(mostPointsScored())
